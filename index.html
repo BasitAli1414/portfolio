@@ -54,9 +54,27 @@
         }
     </style>
 
+<script>
+    // Function to detect if the user is using Chrome on a mobile device
+    function isChromeMobile() {
+      return /Chrome/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent);
+    }
+  
+    // Function to change the image based on the browser
+    function changeImage() {
+      if (isChromeMobile()) {
+        // If Chrome on mobile, change the image source
+        document.getElementById('myImage').src = 'mobile_image.jpg';
+      } else {
+        // Otherwise, keep the default image source
+        document.getElementById('myImage').src = 'default_image.jpg';
+      }
+    }
+  </script>
+
     </head>
 
-<body class="bg-dark onepage-version bg-fixed" style="background-image: url(assets/img/shape/banner-1.png);">
+<body class="bg-dark onepage-version bg-fixed" style="background-image: url(assets/img/shape/banner-1.png);" onload="changeImage()">
 
     <!-- Start Preloader 
     ============================================= -->
@@ -101,7 +119,9 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand smooth-menu" href="#home">
-                        <img src="assets/img/logo-light.png" class="logo logo-display" alt="Logo">
+                        <img id="myImage" src="assets/img/logo_light_mobile.png" alt="Logo">
+                    
+                        <!-- <img src="assets/img/logo-light.png" class="logo logo-display" alt="Logo"> -->
                         <img src="assets/img/logo.png" class="logo logo-scrolled" alt="Logo">
                     </a>
                 </div>
